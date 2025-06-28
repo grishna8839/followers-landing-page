@@ -1,6 +1,9 @@
 <?php
-require_once "../services/DotEnvService.php";
-(new DotEnvService(__DIR__ . "/../.env"))->load();
+require_once "services/DotEnvService.php";
+$envPath = __DIR__ . "/.env";
+if (file_exists($envPath)) {
+    (new DotEnvService($envPath))->load();
+}
 
 class DatabaseHandler
 {
