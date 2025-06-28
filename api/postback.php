@@ -8,11 +8,14 @@
 require_once "../services/ServerService.php";
 require_once "../services/ConversionService.php";
 require_once "../services/SMMGlobeService.php";
-require_once "../services/DotEnvService.php";
 require_once "../database/Session.php";
 require_once "../database/Click.php";
+require_once "services/DotEnvService.php";
 
-(new DotEnvService(__DIR__ . "/../.env"))->load();
+$envPath = __DIR__ . "/.env";
+if (file_exists($envPath)) {
+    (new DotEnvService($envPath))->load();
+}
 
 const AUTHORIZED_IPS = [
     // US-West
