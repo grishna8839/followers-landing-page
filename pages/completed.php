@@ -1,11 +1,14 @@
 <?php
 require_once "../services/ServerService.php";
-require_once "../services/DotEnvService.php";
 require_once "../services/ValidationService.php";
 require_once "../database/Session.php";
 require_once "../database/Click.php";
+require_once "services/DotEnvService.php";
 
-(new DotEnvService(__DIR__ . "/../.env"))->load();
+$envPath = __DIR__ . "/.env";
+if (file_exists($envPath)) {
+    (new DotEnvService($envPath))->load();
+}
 
 // Get the current session and delete all clicks
 $aff_sub4 = ValidationService::affSub4();
