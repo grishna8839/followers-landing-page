@@ -1,7 +1,9 @@
 <?php
 require_once "services/DotEnvService.php";
-
-(new DotEnvService(__DIR__ . "/../.env"))->load();
+$envPath = __DIR__ . "/.env";
+if (file_exists($envPath)) {
+    (new DotEnvService($envPath))->load();
+}
 
 $app_name = (string)getenv("APP_NAME");
 $app_version = (string)getenv("APP_VERSION");
