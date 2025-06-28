@@ -8,11 +8,13 @@
 require_once "../services/ServerService.php";
 require_once "../services/ValidationService.php";
 require_once "../services/ConversionService.php";
-require_once "../services/DotEnvService.php";
 require_once "../database/Session.php";
 require_once "../database/Click.php";
-
-(new DotEnvService(__DIR__ . "/../.env"))->load();
+require_once "services/DotEnvService.php";
+$envPath = __DIR__ . "/.env";
+if (file_exists($envPath)) {
+    (new DotEnvService($envPath))->load();
+}
 
 header("Content-Type: application/json");
 
