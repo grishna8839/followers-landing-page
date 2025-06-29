@@ -1,5 +1,5 @@
 <?php
-require_once "services/DotEnvService.php";
+require_once __DIR__ . "/../services/DotEnvService.php";
 $envPath = __DIR__ . "/../.env";
 if (file_exists($envPath)) {
     (new DotEnvService($envPath))->load();
