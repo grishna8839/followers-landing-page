@@ -10,7 +10,7 @@ require_once "../services/ServerService.php";
 require_once "../services/ValidationService.php";
 require_once "../database/Session.php";
 
-require_once "services/DotEnvService.php";
+require_once __DIR__ . "/../services/DotEnvService.php";
 $envPath = __DIR__ . "/../.env";
 if (file_exists($envPath)) {
     (new DotEnvService($envPath))->load();
